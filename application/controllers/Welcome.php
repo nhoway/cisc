@@ -25,7 +25,7 @@ class Welcome extends CI_Controller {
 		        'id' => 1,
 		        'name' => 'Services',
 		        'parent' => null,
-		        'slug' => 'services',
+		        'slug' => '#services',
 		    ),
 				array(
 		        'id' => 2,

@@ -295,18 +295,18 @@ class Multi_menu {
     private function prepare_items(array $data, $parent = null)
     {
       $items = array();
-    foreach ($data as $item)
-    {
-      if ($item[$this->menu_parent] == $parent)
+      foreach ($data as $item)
       {
-        $items[$item[$this->menu_id]] = $item;
-        $items[$item[$this->menu_id]]['children'] = $this->prepare_items($data, $item[$this->menu_id]);
+        if ($item[$this->menu_parent] == $parent)
+        {
+          $items[$item[$this->menu_id]] = $item;
+          $items[$item[$this->menu_id]]['children'] = $this->prepare_items($data, $item[$this->menu_id]);
+        }
       }
-    }
-    // after items constructed
-    // sort array by order
-    usort($items,array($this, 'sort_by_order'));
-    return $items;
+      // after items constructed
+      // sort array by order
+      usort($items,array($this, 'sort_by_order'));
+      return $items;
     }
     /**
      * Sort array by order
@@ -327,19 +327,19 @@ class Multi_menu {
      * @return void
      */
     private function render_item($items, &$html = '')
-  {
+    {
       if ( empty($html) )
       {
         $nav_tag_opened = true;
-      $html .= $this->nav_tag_open;
-      // check is there additiona menu item for the the first place
-      if ( ! empty($this->_additional_item['first'])) {
-        $html .= $this->_additional_item['first'];
+        $html .= $this->nav_tag_open;
+        // check is there additiona menu item for the the first place
+        if ( ! empty($this->_additional_item['first'])) {
+          $html .= $this->_additional_item['first'];
+        }
       }
-    }
-    else {
-        $html .= $this->children_tag_open;
-    }
+      else {
+          $html .= $this->children_tag_open;
+      }
 
       foreach ($items as $item)
       {
@@ -382,8 +382,9 @@ class Multi_menu {
             else
             {
               $tag_open    = $this->item_tag_open;
-          $href        = site_url($slug);
-          $item_anchor = $this->item_anchor;
+              $item_anchor = $this->item_anchor;
+              // if slug begins with # : this is an anchor inside the same page
+              $href = (substr($slug, 0, 1) === "#") ? $slug : site_url($slug);
             }
         $html .= $this->set_active($tag_open, $slug);
         if (substr_count($item_anchor, '%s') == 2) {
@@ -392,20 +393,20 @@ class Multi_menu {
         else {
           $html .= sprintf($item_anchor, $label);
         }
-            if ( $has_children )
-            {
-                $this->render_item($item['children'], $html);
-                if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_close != '' ) {
-                $html .= $this->parentl1_tag_close;
-              }
-              else {
-            $html  .= $this->parent_tag_close;
-              }
+          if ( $has_children )
+          {
+              $this->render_item($item['children'], $html);
+              if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_close != '' ) {
+              $html .= $this->parentl1_tag_close;
             }
             else {
-              $html .= $this->item_tag_close;
+          $html  .= $this->parent_tag_close;
             }
           }
+          else {
+            $html .= $this->item_tag_close;
+          }
+        }
       }
 
       if (isset($nav_tag_opened))
