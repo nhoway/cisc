@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>ascale | Data storage at scale</title>
+  <title>cisc</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
