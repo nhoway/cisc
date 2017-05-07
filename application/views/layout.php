@@ -50,7 +50,7 @@
           ->inject_item('<li class="hidden"><a href="#page-top"></a></li>', 'first')
           ->render(array(
           'nav_tag_open'  => '<ul class="nav navbar-nav navbar-right">',
-          //'item_anchor'   => '<a class="page-scroll" href="%s">%s</a>',
+          'item_anchor'   => '<a class="page-scroll" href="%s">%s</a>',
           ));
         ?>
       </div>
