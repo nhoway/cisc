@@ -20,39 +20,26 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$config["nav_tag_open"]          = '<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">';
-    $config["parent_tag_open"]       = '<li class="dropdown-submenu">';
-    $config["parent_anchor_tag"]     = '<a tabindex="-1" href="%s">%s</a>';
-    $config["children_tag_open"]     = '<ul class="dropdown-menu">';
-
 		$data = array(
 		    array(
 		        'id' => 1,
-		        'name' => 'First Menu',
+		        'name' => 'Services',
 		        'parent' => null,
-		        'slug' => 'menu-1',
-		        'icon' => 'fa fa-trash' // <--
+		        'slug' => 'services',
 		    ),
 				array(
 		        'id' => 2,
 		        'name' => 'First Menu',
 		        'parent' => null,
 		        'slug' => 'menu-1',
-		        'icon' => 'fa fa-trash' // <--
+						'href' => '#service'
 		    ),
-				array(
-						'id' => 3,
-						'name' => 'First Menu',
-						'parent' => 1,
-						'slug' => 'menu-1',
-						'icon' => 'fa fa-trash' // <--
-				),
 		);
 
 		$this->load->library("multi_menu");
-    $this->multi_menu->initialize($config);
+    //$this->multi_menu->initialize($config);
 		$this->multi_menu->set_items($data);
 
-		$this->load->view('welcome_message');
+		$this->load->view('layout');
 	}
 }
