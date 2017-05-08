@@ -29,10 +29,27 @@ class Welcome extends CI_Controller {
 		    ),
 				array(
 		        'id' => 2,
-		        'name' => 'First Menu',
+		        'name' => 'Portfolio',
 		        'parent' => null,
-		        'slug' => 'menu-1',
-						'href' => '#service'
+		        'slug' => '#portfolio',
+		    ),
+				array(
+		        'id' => 3,
+		        'name' => 'About',
+		        'parent' => null,
+		        'slug' => '#about',
+		    ),
+				array(
+		        'id' => 4,
+		        'name' => 'Team',
+		        'parent' => null,
+		        'slug' => '#team',
+		    ),
+				array(
+		        'id' => 5,
+		        'name' => 'Contact',
+		        'parent' => null,
+		        'slug' => '#contact',
 		    ),
 		);
 
