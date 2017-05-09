@@ -10,10 +10,10 @@
         <?php
           foreach ($items as $key => $item) {
             if ((count($items) - $key) <= 2 && $key % 3 == 0) {
-              echo '<div class="col-md-4  col-md-offset-'. (4 / (count($items) - $key)) .'">';
+              echo '<div class="col-md-4  col-md-offset-'. (4 / (count($items) - $key)) ."\">\n";
             }
             else {
-              echo '<div class="col-md-4">';
+              echo "<div class=\"col-md-4\">\n";
             }
         ?>
           <span class="fa-stack fa-4x">
